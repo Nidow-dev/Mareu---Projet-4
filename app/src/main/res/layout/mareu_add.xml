@@ -1,116 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/AppTheme.PopupOverlay"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
-    
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <TextView
-            android:id="@+id/mareu_description_name"
-            style="@style/mareu_add_reunions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choisissez le sujet de la réunion"
-            android:textSize="25sp">
-        </TextView>
-        
-        <EditText
-            android:id="@+id/mareu_type_name"
-            style="@style/mareu_add_reunions"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/mareu_description_name"
-            android:gravity="left"
-            android:text="Sujet de la réunion"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
         <RelativeLayout
-
-            android:id="@+id/date_et_heure"
-            style="@style/mareu_add_reunions"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/mareu_type_name"
-            android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/selection_date_heure"
-            style="@style/mareu_add_reunions"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Séléctionnez la date et l'heure"
-            android:textSize="25sp"></TextView>
-
-
-            <EditText
-            android:id="@+id/in_date"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="82dp" />
-
-        <Button
-            android:id="@+id/btn_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/in_date"
-            android:layout_toEndOf="@+id/in_date"
-            android:layout_toRightOf="@+id/in_date"
-            android:text="DATE" />
-
-        <EditText
-            android:id="@+id/in_time"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/in_date"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true" />
-
-        <Button
-            android:id="@+id/btn_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_date"
-            android:layout_alignStart="@+id/btn_date"
-            android:layout_alignLeft="@+id/btn_date"
-            android:text="HEURE" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@id/date_et_heure">
+            android:layout_height="fill_parent"/>
 
             <TextView
-                android:id="@+id/mareu_add_participants"
+                android:id="@+id/mareu_description_name"
                 style="@style/mareu_add_reunions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choisissez les participants"
+                android:text="Choisissez le sujet de la réunion"
                 android:textSize="25sp">
             </TextView>
 
             <EditText
-                android:id="@+id/emails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/mareu_add_participants"
+                android:id="@+id/mareu_type_name"
                 style="@style/mareu_add_reunions"
-                android:text="Participants"
-                android:inputType="textEmailAddress" />
-        </RelativeLayout>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mareu_description_name"
+                android:gravity="left"
+                android:hint="Sujet de la réunion"/>
 
-    </RelativeLayout>
 
-</LinearLayout>
+            <RelativeLayout
+
+                android:id="@+id/date_et_heure"
+                style="@style/mareu_add_reunions"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mareu_type_name"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/selection_date_heure"
+                    style="@style/mareu_add_reunions"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Séléctionnez la date et l'heure"
+                    android:textSize="25sp"></TextView>
+
+
+                <EditText
+                    android:id="@+id/in_date"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="82dp" />
+
+                <Button
+                    android:id="@+id/btn_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/in_date"
+                    android:layout_toEndOf="@+id/in_date"
+                    android:layout_toRightOf="@+id/in_date"
+                    android:text="DATE" />
+
+                <EditText
+                    android:id="@+id/in_time"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/in_date"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
+
+                <Button
+                    android:id="@+id/btn_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_date"
+                    android:layout_alignStart="@+id/btn_date"
+                    android:layout_alignLeft="@+id/btn_date"
+                    android:text="HEURE" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/salle_choice"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@id/date_et_heure">
+
+                <TextView
+                    android:id="@+id/mareu_add_participants"
+                    style="@style/mareu_add_reunions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Choisissez les participants"
+                    android:textSize="25sp">
+                </TextView>
+
+                <EditText
+                    android:id="@+id/emails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mareu_add_participants"
+                    style="@style/mareu_add_reunions"
+                    android:hint="Participants"
+                    android:inputType="textEmailAddress" />
+
+            </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <Spinner
+            android:id="@+id/spinner_salles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            style="@style/mareu_add_reunions"/>
+
+    </LinearLayout>
+
+</ScrollView>
