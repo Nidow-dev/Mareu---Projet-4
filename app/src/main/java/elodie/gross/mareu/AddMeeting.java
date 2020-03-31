@@ -26,7 +26,7 @@ public class AddMeeting extends AppCompatActivity implements
         View.OnClickListener {
 
     Button btnDatePicker, btnTimePicker;
-    EditText txtDate, txtTime, meetingName;
+    EditText txtDate, txtTime, meetingName, participants;
     private int mYear, mMonth, mDay, mHour, mMinute;
     Spinner spinner;
     Button btnValider;
@@ -50,13 +50,17 @@ public class AddMeeting extends AppCompatActivity implements
         btnTimePicker.setOnClickListener(this);
         btnValider = (Button) findViewById(R.id.btn_valider);
         meetingName = (EditText) findViewById(R.id.mareu_type_name);
+        participants = (EditText) findViewById(R.id.emails);
+
 
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Meeting meeting = new Meeting(meetingName.getText().toString(), calendarDate, calendarTime,);  // liste participants
+                Meeting meeting = new Meeting(meetingName.getText().toString(), calendarDate, calendarTime, participants.getText().toString(), spinner);  // liste participants
             }
         });
+
+ /** Salle de Réunion Spinner **/
 
         List<String> rooms = Arrays.asList("Salle A", "Salle B", "Salle C", "Salle D", "Salle E");
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, rooms));
@@ -69,7 +73,6 @@ public class AddMeeting extends AppCompatActivity implements
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }

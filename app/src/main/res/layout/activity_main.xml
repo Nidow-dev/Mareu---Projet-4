@@ -32,4 +32,10 @@
         app:fabCustomSize="64dp"
         android:tint="@color/colorPrimary"/>
 
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+    </ListView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
