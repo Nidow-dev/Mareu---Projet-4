@@ -38,9 +38,9 @@ public class ApiMeetingService implements ApiMeeting {
 
 // Afficher la liste des réunions
 
-
+  
   @Override
-    public List<Meeting> getMeeting() {
+    public List<Meeting> getMeeting(Calendar date, String roomName) {
         return meeting;
     }
 
@@ -50,13 +50,13 @@ public class ApiMeetingService implements ApiMeeting {
     public void addMeeting(Meeting meeting){
 
         new DI();
-      // Rajouter la classe DI
+
     }
 
 // Supprimer une réunion
     @Override
     public void delMeeting(Meeting meeting) {
         meeting.remove(meeting);
-      // Rajouter la classe DI
+
     }
 }
