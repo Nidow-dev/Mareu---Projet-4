@@ -7,6 +7,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.view.Menu;
@@ -14,9 +16,21 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import elodie.gross.mareu.model.Meeting;
+import elodie.gross.mareu.service.ApiMeetingService;
+import elodie.gross.mareu.ui.MyRecyclerViewAdapter;
+
 public class MainActivity extends AppCompatActivity {
 
-    ListView listView;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
+
+    public static ApiMeetingService ApiMeeting;
+
+
+    private Meeting adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,26 +39,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listView = (ListView) findViewById(R.id.listview);
-        String[] listeReunions = new String[]{
-             "Reunion A",
-             "Reunion B",
-             "Reunion C",
-             "Reunion D",
-             "Reunion E",
-             "Reunion F",
 
-        };
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listeReunions);
-
-        listView.setAdapter(arrayAdapter);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (getApplicationContext(), AddMeeting.class);
+                Intent intent = new Intent(getApplicationContext(), AddMeeting.class);
                 startActivity(intent);
             }
         });
@@ -68,6 +71,15 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
+        // RecyclerView
+
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        mAdapter = new MyRecyclerViewAdapter(myDataset);
+        recyclerView.setAdapter(mAdapter);
 
         return super.onOptionsItemSelected(item);
     }

@@ -14,15 +14,18 @@ public class Meeting implements Serializable {
     private String mMeetingName;
     private Calendar mDate;
     private Calendar mHeure;
-    private List<String> mParticipants;
+    private String mParticipants;
+    private String mRoom;
 
     // private Integer mColor;
 
-    public Meeting(String meetingName, Calendar date, Calendar heure, List<String> participants) {
+    public Meeting(String meetingName, Calendar date, Calendar heure, String participants, String room) {
         mMeetingName = meetingName;
         mDate = date;
         mHeure = heure;
         mParticipants = participants;
+        mRoom = room;
+
 
         // Couleur aléatoire //
 

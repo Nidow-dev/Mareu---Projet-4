@@ -3,13 +3,16 @@ package elodie.gross.mareu.service;
 import java.util.Calendar;
 import java.util.List;
 
+import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
 
 public class ApiMeetingService implements ApiMeeting {
 
+    private List <Meeting> meeting = DummyMeetingGenerator.generateMeeting();
+
 // Afficher la liste des salles de reunions
 
-    @Override
+  /**  @Override
     public List<String> getRooms() {
         return Rooms;
     }
@@ -31,28 +34,30 @@ public class ApiMeetingService implements ApiMeeting {
     @Override
     public void delAllRooms() {
 
-    }
+    } **/
 
 // Afficher la liste des réunions
 
-    @Override
-    List<Meeting> getMeetings(Calendar date, String roomName);
 
-    @Override
+  @Override
     public List<Meeting> getMeeting() {
-        return Meeting;
+        return meeting;
     }
 
 // Ajouter une réunion
 
     @Override
-    void addMeeting(Meeting meeting){
+    public void addMeeting(Meeting meeting){
 
+        new DI();
+      // Rajouter la classe DI
     }
 
 // Supprimer une réunion
     @Override
     public void delMeeting(Meeting meeting) {
 
+      DI.delMeeting;
+      // Rajouter la classe DI
     }
 }

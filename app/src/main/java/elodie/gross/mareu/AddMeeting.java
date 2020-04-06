@@ -32,6 +32,7 @@ public class AddMeeting extends AppCompatActivity implements
     Button btnValider;
     Calendar calendarDate, calendarTime;
     Meeting meeting;
+    String room;
 
     // finir liste participants
 
@@ -56,7 +57,7 @@ public class AddMeeting extends AppCompatActivity implements
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Meeting meeting = new Meeting(meetingName.getText().toString(), calendarDate, calendarTime, participants.getText().toString(), spinner);  // liste participants
+                Meeting meeting = new Meeting(meetingName.getText().toString(), calendarDate, calendarTime, participants.getText().toString(), room );  // liste participants
             }
         });
 
@@ -129,6 +130,11 @@ public class AddMeeting extends AppCompatActivity implements
                     }, mHour, mMinute, false);
             timePickerDialog.show();
 
+            finish();
+
+            }
+
+
         }
     }
 
@@ -143,4 +149,3 @@ public class AddMeeting extends AppCompatActivity implements
         List<String> participants = validateEmailInput;
 
     }**/
-}

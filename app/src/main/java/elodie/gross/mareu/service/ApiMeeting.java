@@ -7,7 +7,7 @@ import elodie.gross.mareu.model.Meeting;
 
 public interface ApiMeeting {
 
-    List<String> getRooms();
+   /** List<String> getRooms();
 
     // Ajouter une réunion
 
@@ -21,7 +21,7 @@ public interface ApiMeeting {
 
     void delAllRooms();
 
-    // Liste des réunions
+    // Liste des réunions **/
 
     List<Meeting> getMeeting();
 
