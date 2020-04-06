@@ -56,8 +56,7 @@ public class ApiMeetingService implements ApiMeeting {
 // Supprimer une réunion
     @Override
     public void delMeeting(Meeting meeting) {
-
-      DI.delMeeting;
+        meeting.remove(meeting);
       // Rajouter la classe DI
     }
 }
