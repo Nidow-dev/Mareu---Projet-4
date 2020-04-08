@@ -1,31 +1,25 @@
 package elodie.gross.mareu.di;
 
-import java.util.List;
-
-import elodie.gross.mareu.model.Meeting;
-import elodie.gross.mareu.service.ApiMeeting;
 import elodie.gross.mareu.service.ApiMeetingService;
-import elodie.gross.mareu.service.DummyMeetingGenerator;
+import elodie.gross.mareu.service.FakeApiMeeting;
 
 public class DI {
 
-    private static ApiMeeting service = new ApiMeetingService();
+    private static FakeApiMeeting service = new ApiMeetingService();
 
     /**
-     * Get an instance on @{@link ApiMeeting}
+     * Get an instance on @{@link FakeApiMeeting}
      * @return
      */
-    public static ApiMeeting getApiMeeting() {
+    public static FakeApiMeeting getApiMeeting() {
         return service;
     }
 
     /**
-     * Get always a new instance on @{@link ApiMeeting}. Useful for tests, so we ensure the context is clean.
+     * Get always a new instance on @{@link FakeApiMeeting}. Useful for tests, so we ensure the context is clean.
      * @return
      */
-    public static ApiMeeting getNewInstanceApiMeeting() {
+    public static FakeApiMeeting getNewInstanceApiMeeting() {
         return new ApiMeetingService();
     }
-}
-
 }

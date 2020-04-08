@@ -16,9 +16,12 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.List;
+
 import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
 import elodie.gross.mareu.service.ApiMeetingService;
+import elodie.gross.mareu.service.FakeApiMeeting;
 import elodie.gross.mareu.ui.MyRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
 
-    public static ApiMeetingService mApiMeeting;
+    public FakeApiMeeting mApiMeeting;
 
-
+    private List<Meeting> mMeetingList;
     private Meeting adapter;
 
     @Override
@@ -43,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mApiMeeting = DI.getApiMeetingService();
+        mApiMeeting = DI.getApiMeeting();
+        mMeetingList = mApiMeeting.getMeeting();
+
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -52,8 +57,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddMeeting.class);
                 startActivity(intent);
+
+
             }
         });
+
+        // RecyclerView
+
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        mAdapter = new MyRecyclerViewAdapter(mMeetingList);
+        recyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -76,17 +92,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        // RecyclerView
 
-
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        mAdapter = new MyRecyclerViewAdapter(Meetings);
-        recyclerView.setAdapter(mAdapter);
 
         return super.onOptionsItemSelected(item);
     }
+
+    // Rafraichir la list de la RecyclerView onResume ou onStart et initList
 
 
 }

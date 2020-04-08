@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
 
 public class AddMeeting extends AppCompatActivity implements
@@ -58,8 +59,11 @@ public class AddMeeting extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 Meeting meeting = new Meeting(meetingName.getText().toString(), calendarDate, calendarTime, participants.getText().toString(), room );  // liste participants
-            }
+                DI.getApiMeeting().addMeeting(meeting);
+                finish(); }
+
         });
+
 
  /** Salle de Réunion Spinner **/
 
@@ -130,7 +134,6 @@ public class AddMeeting extends AppCompatActivity implements
                     }, mHour, mMinute, false);
             timePickerDialog.show();
 
-            finish();
 
             }
 

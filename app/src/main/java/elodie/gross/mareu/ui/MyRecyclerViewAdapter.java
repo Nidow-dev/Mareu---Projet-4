@@ -1,38 +1,45 @@
 package elodie.gross.mareu.ui;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Calendar;
 import java.util.List;
 
 import elodie.gross.mareu.R;
 import elodie.gross.mareu.model.Meeting;
-import elodie.gross.mareu.service.ApiMeeting;
 
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder> {
-        private String[] mDataset;
+        List <Meeting> mMeetingList;
 
         // Provide a reference to the views for each data item
         // Complex data items may need more than one view per item, and
         // you provide access to all the views for a data item in a view holder
         public static class MyViewHolder extends RecyclerView.ViewHolder {
             // each data item is just a string in this case
-            public Meetings meeting;
-            public MyViewHolder(Meeting v) {
+
+TextView description, participants;
+ImageView roundColor;
+
+
+            public Meeting meeting;
+            public MyViewHolder(View v) {
                 super(v);
-                Meeting = v;
+
+                roundColor = v.findViewById(R.id.item_circle_color);
+                description = v.findViewById(R.id.item_description);
+                participants = v.findViewById(R.id.item_participants);
             }
         }
 
         // Provide a suitable constructor (depends on the kind of dataset)
-        public MyRecyclerViewAdapter(String[] Meetings) {
-            mMeetings = myMeetings;
+        public MyRecyclerViewAdapter(List<Meeting> mMeetingList) {
+            this.mMeetingList = mMeetingList;
         }
 
         // Create new views (invoked by the layout manager)
@@ -40,8 +47,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         public MyRecyclerViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                          int viewType) {
             // create a new view
-            TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.my_text_view, parent, false);
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.meeting_items_list, parent, false);
             MyViewHolder vh = new MyViewHolder(v);
             return vh;
         }
@@ -51,14 +58,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         public void onBindViewHolder(MyViewHolder holder, int position) {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
-            holder.textView.setText(mMeetings[position]);
+            holder.description.setText(mMeetingList.get(position).getmMeetingName());
+
 
         }
 
         // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
-            return mMeetings.length;
+            return mMeetingList.size();
         }
     }
 

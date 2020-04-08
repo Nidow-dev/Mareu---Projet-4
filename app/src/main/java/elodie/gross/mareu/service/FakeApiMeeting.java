@@ -1,11 +1,17 @@
 package elodie.gross.mareu.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
 import elodie.gross.mareu.model.Meeting;
 
-public interface ApiMeeting {
+public interface FakeApiMeeting {
+
+
+
+
 
    /** List<String> getRooms();
 
