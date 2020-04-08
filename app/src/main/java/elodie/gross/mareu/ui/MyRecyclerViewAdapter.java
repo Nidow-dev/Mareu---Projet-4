@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Calendar;
 import java.util.List;
 
+import elodie.gross.mareu.R;
 import elodie.gross.mareu.model.Meeting;
 import elodie.gross.mareu.service.ApiMeeting;
 
@@ -22,16 +23,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         // you provide access to all the views for a data item in a view holder
         public static class MyViewHolder extends RecyclerView.ViewHolder {
             // each data item is just a string in this case
-            public Meeting meeting;
-            public MyViewHolder(TextView v) {
+            public Meetings meeting;
+            public MyViewHolder(Meeting v) {
                 super(v);
-                textView = v;
+                Meeting = v;
             }
         }
 
         // Provide a suitable constructor (depends on the kind of dataset)
-        public MyRecyclerViewAdapter(String[] myDataset) {
-            mDataset = myDataset;
+        public MyRecyclerViewAdapter(String[] Meetings) {
+            mMeetings = myMeetings;
         }
 
         // Create new views (invoked by the layout manager)
@@ -50,14 +51,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         public void onBindViewHolder(MyViewHolder holder, int position) {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
-            holder.textView.setText(mDataset[position]);
+            holder.textView.setText(mMeetings[position]);
 
         }
 
         // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
-            return mDataset.length;
+            return mMeetings.length;
         }
     }
-}
+

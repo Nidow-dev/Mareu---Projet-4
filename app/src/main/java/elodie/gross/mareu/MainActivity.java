@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
 import elodie.gross.mareu.service.ApiMeetingService;
 import elodie.gross.mareu.ui.MyRecyclerViewAdapter;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
 
-    public static ApiMeetingService ApiMeeting;
+    public static ApiMeetingService mApiMeeting;
 
 
     private Meeting adapter;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mApiMeeting = DI.getApiMeetingService();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -72,13 +75,14 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+
         // RecyclerView
 
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new MyRecyclerViewAdapter(myDataset);
+        mAdapter = new MyRecyclerViewAdapter(Meetings);
         recyclerView.setAdapter(mAdapter);
 
         return super.onOptionsItemSelected(item);
