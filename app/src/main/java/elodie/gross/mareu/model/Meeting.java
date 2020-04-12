@@ -45,4 +45,6 @@ public class Meeting implements Serializable {
         return mTopic;
     }
 
+    public String getmParticipants() {return mParticipants; }
+
 }

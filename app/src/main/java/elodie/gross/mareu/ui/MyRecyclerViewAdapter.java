@@ -60,7 +60,8 @@ ImageView roundColor;
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
             holder.description.setText(mMeetingList.get(position).getmMeetingName());
-            holder.description.setText(mMeetingList.get(position).getmDate());
+            holder.participants.setText(mMeetingList.get(position).getmParticipants());
+            holder.date.set(mMeetingList.get(position).getmDate());
 
 
         }
