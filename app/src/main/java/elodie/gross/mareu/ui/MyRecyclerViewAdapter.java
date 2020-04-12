@@ -23,7 +23,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         public static class MyViewHolder extends RecyclerView.ViewHolder {
             // each data item is just a string in this case
 
-TextView description, participants;
+TextView description, participants, date, heure;
 ImageView roundColor;
 
 
@@ -34,6 +34,7 @@ ImageView roundColor;
                 roundColor = v.findViewById(R.id.item_circle_color);
                 description = v.findViewById(R.id.item_description);
                 participants = v.findViewById(R.id.item_participants);
+
             }
         }
 
@@ -59,6 +60,7 @@ ImageView roundColor;
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
             holder.description.setText(mMeetingList.get(position).getmMeetingName());
+            holder.description.setText(mMeetingList.get(position).getmDate());
 
 
         }

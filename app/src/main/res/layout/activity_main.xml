@@ -23,19 +23,24 @@
 
 
 
-   <LinearLayout
+   <RelativeLayout
        android:layout_width="match_parent"
-       android:layout_height="match_parent">
-       android:orientation="vertical"
+       android:layout_height="match_parent"
+       android:layout_marginTop="60dp">
        xmlns:android="http://shemas.android.com/apk/res/android">
 
        <androidx.recyclerview.widget.RecyclerView
            android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:id="@+id/recyclerView">
+           android:layout_height="wrap_content"
+           android:layout_marginStart="@dimen/margin_text"
+           android:layout_marginTop="@dimen/margin_text"
+           android:layout_marginBottom="@dimen/margin_text"
+           android:id="@+id/recyclerView"
+           app:layoutManager="LinearLayoutManager"
+           tools:listitem="@layout/meeting_items_list">
        </androidx.recyclerview.widget.RecyclerView>
 
-   </LinearLayout>
+   </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

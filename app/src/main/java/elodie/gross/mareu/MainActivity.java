@@ -2,25 +2,21 @@ package elodie.gross.mareu;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
-import elodie.gross.mareu.service.ApiMeetingService;
 import elodie.gross.mareu.service.FakeApiMeeting;
 import elodie.gross.mareu.ui.MyRecyclerViewAdapter;
 
