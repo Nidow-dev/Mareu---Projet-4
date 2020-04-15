@@ -8,7 +8,9 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import elodie.gross.mareu.R;
 import elodie.gross.mareu.model.Meeting;
@@ -34,6 +36,7 @@ ImageView roundColor;
                 roundColor = v.findViewById(R.id.item_circle_color);
                 description = v.findViewById(R.id.item_description);
                 participants = v.findViewById(R.id.item_participants);
+                date = v.findViewById(R.id.item_date);
 
             }
         }
@@ -61,7 +64,11 @@ ImageView roundColor;
             // - replace the contents of the view with that element
             holder.description.setText(mMeetingList.get(position).getmMeetingName());
             holder.participants.setText(mMeetingList.get(position).getmParticipants());
-            holder.date.set(mMeetingList.get(position).getmDate());
+          /// ajouter les images  holder.roundColor.setImageDrawable();
+
+            SimpleDateFormat mDate = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
+            String setDate = mDate.format(mMeetingList.get(position).getmDate().getTime());
+           holder.date.setText(setDate);
 
 
         }

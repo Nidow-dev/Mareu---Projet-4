@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
-        recyclerView = findViewById(R.id.recyclerView);
+        mMeetingList = mApiMeeting.getMeeting();
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
