@@ -68,6 +68,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initRecyclerView();
+    }
+
+    private void initRecyclerView() {
+        recyclerView = findViewById(R.id.recyclerView);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -75,24 +86,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
 
-        init(null, "");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onStop() {
-        EventBus.getDefault().unregister(this);
-        super.onStop();
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -105,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
-
 
 
         return super.onOptionsItemSelected(item);
