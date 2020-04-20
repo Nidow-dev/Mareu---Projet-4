@@ -105,6 +105,26 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent("SORT_ACTION");
+        switch (item.getItemId()){
+            case R.id.sort_by_name:
+                Log.e("room", "onOptionsItemSelected: ROOM");
+                intent.putExtra("SORTBY", "ROOM");
+                break;
+            case R.id.sort_by_date:
+                intent.putExtra("SORTBY", "DATE");
+                break;
+        }
+
     // Rafraichir la list de la RecyclerView onResume ou onStart et initList
 
 

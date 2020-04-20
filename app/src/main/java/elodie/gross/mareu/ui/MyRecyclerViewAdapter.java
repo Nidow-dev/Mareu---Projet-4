@@ -16,7 +16,9 @@ import java.util.Locale;
 import java.util.Random;
 
 import elodie.gross.mareu.R;
+import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
+import elodie.gross.mareu.service.ApiMeetingService;
 
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder> {
@@ -43,7 +45,7 @@ ImageView roundColor;
                 description = v.findViewById(R.id.item_description);
                 participants = v.findViewById(R.id.item_participants);
                 date = v.findViewById(R.id.item_date);
-                deleteButton = itemView.findViewById(R.id.delete_item);
+                delButton = itemView.findViewById(R.id.delete_item);
                 room = v.findViewById(R.id.item_salle);
 
             }
@@ -78,8 +80,18 @@ ImageView roundColor;
             String setDate = mDate.format(mMeetingList.get(position).getmDate().getTime());
            holder.date.setText(setDate);
            holder.room.setText(mMeetingList.get(position).getmRoom());
-           holder.roundColor.setImageDrawable(R.array.random_images_array);
+           holder.roundColor.setImageDrawable(R.id.);
 
+
+            delButton.setOnClickListener(view -> callback.onClickDelete(meeting));
+            delButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Meeting meeting = delete Meeting();
+                    DI.getApiMeeting().delMeeting(meeting);
+                    finish(); }
+
+            });
 
 
 
@@ -96,6 +108,7 @@ ImageView roundColor;
 
 
         }
+
 
         // Return the size of your dataset (invoked by the layout manager)
         @Override
