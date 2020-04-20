@@ -1,5 +1,7 @@
 package elodie.gross.mareu.ui;
 
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 import elodie.gross.mareu.R;
 import elodie.gross.mareu.model.Meeting;
@@ -25,8 +28,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         public static class MyViewHolder extends RecyclerView.ViewHolder {
             // each data item is just a string in this case
 
-TextView description, participants, date, heure;
+TextView description, participants, date, heure, room;
 ImageView roundColor;
+
+
+
 
 
             public Meeting meeting;
@@ -37,6 +43,8 @@ ImageView roundColor;
                 description = v.findViewById(R.id.item_description);
                 participants = v.findViewById(R.id.item_participants);
                 date = v.findViewById(R.id.item_date);
+                deleteButton = itemView.findViewById(R.id.delete_item);
+                room = v.findViewById(R.id.item_salle);
 
             }
         }
@@ -69,6 +77,22 @@ ImageView roundColor;
             SimpleDateFormat mDate = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
             String setDate = mDate.format(mMeetingList.get(position).getmDate().getTime());
            holder.date.setText(setDate);
+           holder.room.setText(mMeetingList.get(position).getmRoom());
+           holder.roundColor.setImageDrawable(R.array.random_images_array);
+
+
+
+
+
+           /*** Resources resources=getResources();
+            final TypedArray imgs = getResources().obtainTypedArray(R.array.random_images_array);
+            final Random rand = new Random();
+            final int rndInt = rand.nextInt(imgs.length());
+            final int resID = imgs.getResourceId(rndInt, 0);
+
+
+            /*** int[] images = {R.drawable.circle_0,R.drawable.circle_1,R.drawable.circle_2,R.drawable.circle_3, R.drawable.circle_4, R.drawable.circle_5};
+            Random rand = new Random()***/
 
 
         }

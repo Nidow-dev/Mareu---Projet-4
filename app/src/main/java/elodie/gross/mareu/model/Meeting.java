@@ -22,11 +22,6 @@ public class Meeting implements Serializable {
         mRoom = room;
 
 
-        // Couleur aléatoire //
-
-        // Random rnd = new Random();
-        // int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-        // view.setBackgroundColor(color);
     }
 
     public String getmMeetingName() {
@@ -46,5 +41,7 @@ public class Meeting implements Serializable {
     }
 
     public String getmParticipants() {return mParticipants; }
+
+    public String getmRoom () { return mRoom;}
 
 }

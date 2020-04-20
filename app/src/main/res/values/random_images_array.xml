@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="apptour">
+        <item>@drawable/circle_0</item>
+        <item>@drawable/circle_1</item>
+        <item>@drawable/circle_2</item>
+        <item>@drawable/circle_3</item>
+        <item>@drawable/circle_4</item>
+        <item>@drawable/circle_5</item>
+    </array>
+
+    <string-array name="random_images_array" />
+</resources>
