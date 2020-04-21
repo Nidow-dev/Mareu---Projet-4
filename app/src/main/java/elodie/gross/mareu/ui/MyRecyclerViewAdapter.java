@@ -96,15 +96,15 @@ ImageView roundColor;
 
 
 
-           /*** Resources resources=getResources();
+           Resources resources=getResources();
             final TypedArray imgs = getResources().obtainTypedArray(R.array.random_images_array);
             final Random rand = new Random();
             final int rndInt = rand.nextInt(imgs.length());
             final int resID = imgs.getResourceId(rndInt, 0);
 
 
-            /*** int[] images = {R.drawable.circle_0,R.drawable.circle_1,R.drawable.circle_2,R.drawable.circle_3, R.drawable.circle_4, R.drawable.circle_5};
-            Random rand = new Random()***/
+            int[] images = {R.drawable.circle_0,R.drawable.circle_1,R.drawable.circle_2,R.drawable.circle_3, R.drawable.circle_4, R.drawable.circle_5};
+            Random rand = new Random();
 
 
         }

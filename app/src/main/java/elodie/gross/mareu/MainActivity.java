@@ -2,12 +2,14 @@ package elodie.gross.mareu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,11 +42,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mApiMeeting = DI.getApiMeeting();
         mMeetingList = mApiMeeting.getMeeting();
-
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -101,21 +100,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent("SORT_ACTION");
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.sort_by_name:
                 Log.e("room", "onOptionsItemSelected: ROOM");
                 intent.putExtra("SORTBY", "ROOM");
@@ -123,9 +109,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.sort_by_date:
                 intent.putExtra("SORTBY", "DATE");
                 break;
+
+            return super.onOptionsItemSelected(item);
         }
+        LocalBroadcastManager.getInstance(MainActivity.this).sendBroadcast(intent);
+        return super.onOptionsItemSelected(item);
 
-    // Rafraichir la list de la RecyclerView onResume ou onStart et initList
+        // Rafraichir la list de la RecyclerView onResume ou onStart et initList
 
-
+    }
 }
