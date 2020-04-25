@@ -15,12 +15,12 @@ public class DummyMeetingGenerator {
     }
     public  static List<Meeting> FAKE_MEETING = Arrays.asList(
 
-            new Meeting("meeting test 1", Calendar.getInstance(),Calendar.getInstance(),"participant@mareu.fr", "MeetingRoom.BLANCHE"),
-            new Meeting ("meeting test 2",Calendar.getInstance(),Calendar.getInstance() ,"participant@mareu.fr", "MeetingRoom.JAUNE"),
-            new Meeting ("meeting test 3",Calendar.getInstance(),Calendar.getInstance(),"participant@mareu.fr" , "MeetingRoom.BLEUE"),
-            new Meeting ("meeting test 4",Calendar.getInstance(),Calendar.getInstance(),"participant@mareu.fr" , "MeetingRoom.VERTE"),
-            new Meeting( "meeting test 5",Calendar.getInstance(),Calendar.getInstance(),"participant@mareu.fr", "MeetingRoom.VIOLETTE"),
-            new Meeting("meeting test 6",Calendar.getInstance(),Calendar.getInstance(),"participant@mareu.fr", "MeetingRoom.ROUGE"));
+            new Meeting("Reunion A", Calendar.getInstance(),Calendar.getInstance(),"participant@mareu.fr", "Luigi"),
+            new Meeting ("Reunion B",Calendar.getInstance(),Calendar.getInstance() ,"participant@mareu.fr", "Peach"),
+            new Meeting ("Reunion C",Calendar.getInstance(),Calendar.getInstance(),"participant@mareu.fr" , "Mario"),
+            new Meeting ("Reunion D",Calendar.getInstance(),Calendar.getInstance(),"participant@mareu.fr" , "Wario"),
+            new Meeting( "Reunion E",Calendar.getInstance(),Calendar.getInstance(),"participant@mareu.fr", "Toad"),
+            new Meeting("Reunion F",Calendar.getInstance(),Calendar.getInstance(),"participant@mareu.fr", "Daisy"));
 
 
     }

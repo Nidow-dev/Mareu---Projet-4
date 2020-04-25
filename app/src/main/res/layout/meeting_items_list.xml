@@ -8,29 +8,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/items_layout">
 
-    <LinearLayout
-        android:id="@+id/filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/sort_by"
-            android:layout_width="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_height="match_parent"
-            android:layout_gravity="top|end"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp"
-            android:text="Sort by" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_marginStart="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@+id/sort_by"/>
-
-    </LinearLayout>
 
 
     <ImageView
@@ -40,10 +18,10 @@
         android:background="@drawable/icon_circle_color"
         android:layout_margin="@dimen/margin_text"
         android:singleLine="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        />
 
     <TextView
         android:id="@+id/item_description"
@@ -52,22 +30,24 @@
         android:textAlignment="textStart"
         android:textColor="@color/colorText"
         android:singleLine="true"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_marginStart="@dimen/margin_text"
         app:layout_constrainedWidth="true"
         app:layout_constraintStart_toEndOf="@+id/item_circle_color"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/delete_item"
-        app:layout_constraintBottom_toTopOf="@id/item_participants" />
+        app:layout_constraintEnd_toStartOf="@+id/item_date"
+        app:layout_constraintBottom_toTopOf="@id/item_participants"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/item_participants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
         android:singleLine="true"
+        app:layout_constrainedWidth="true"
         app:layout_constraintStart_toEndOf="@+id/item_circle_color"
-        app:layout_constraintTop_toBottomOf="@id/item_description"
         app:layout_constraintEnd_toStartOf="@+id/item_date"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
@@ -76,22 +56,24 @@
         android:layout_height="wrap_content"
         android:id="@+id/item_date"
         android:textColor="@color/colorPrimaryDark"
-        android:singleLine="true"
+        android:textAlignment="textStart"
+        app:layout_constrainedWidth="true"
+        android:textSize="18sp"
+        android:layout_marginStart="@dimen/margin_text"
         app:layout_constraintStart_toEndOf="@id/item_participants"
-        app:layout_constraintTop_toBottomOf="@id/item_description"
-        app:layout_constraintEnd_toStartOf="@+id/item_heure"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintEnd_toStartOf="@+id/delete_item"
+        app:layout_constraintBottom_toBottomOf="@id/item_heure"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/item_heure"
         android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
         android:singleLine="true"
-        app:layout_constraintStart_toEndOf="@id/item_date"
+        app:layout_constraintStart_toEndOf="@id/item_description"
         app:layout_constraintTop_toBottomOf="@id/item_description"
-        app:layout_constraintEnd_toStartOf="@+id/item_salle"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintEnd_toStartOf="@+id/item_salle"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -99,10 +81,8 @@
         android:id="@+id/item_salle"
         android:textColor="@color/colorPrimaryDark"
         android:singleLine="true"
-        app:layout_constraintStart_toEndOf="@id/item_heure"
-        app:layout_constraintTop_toBottomOf="@id/item_description"
-        app:layout_constraintEnd_toStartOf="@+id/delete_item"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toEndOf="@id/item_participants"
+        app:layout_constraintEnd_toStartOf="@+id/delete_item"/>
 
 
     <ImageButton

@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
 TextView description, participants, date, heure, room;
 ImageView roundColor;
+ImageButton delButton;
 
 
 
@@ -48,8 +50,19 @@ ImageView roundColor;
                 delButton = itemView.findViewById(R.id.delete_item);
                 room = v.findViewById(R.id.item_salle);
 
+                Resources resources=v.getResources();
+                final TypedArray imgs = v.getResources().obtainTypedArray(R.array.roundColor);
+                final Random rand = new Random();
+                final int rndInt = rand.nextInt(imgs.length());
+                final int resID = imgs.getResourceId(rndInt, 0);
+
+
+                roundColor.setImageResource(resID);
+
+
             }
-        }
+            }
+
 
         // Provide a suitable constructor (depends on the kind of dataset)
         public MyRecyclerViewAdapter(List<Meeting> mMeetingList) {
@@ -74,43 +87,29 @@ ImageView roundColor;
             // - replace the contents of the view with that element
             holder.description.setText(mMeetingList.get(position).getmMeetingName());
             holder.participants.setText(mMeetingList.get(position).getmParticipants());
-          /// ajouter les images  holder.roundColor.setImageDrawable();
+            /// ajouter les images  holder.roundColor.setImageDrawable();
 
             SimpleDateFormat mDate = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
             String setDate = mDate.format(mMeetingList.get(position).getmDate().getTime());
-           holder.date.setText(setDate);
-           holder.room.setText(mMeetingList.get(position).getmRoom());
-           holder.roundColor.setImageDrawable(R.id.);
+            holder.date.setText(setDate);
+            holder.room.setText(mMeetingList.get(position).getmRoom());
 
 
-            delButton.setOnClickListener(view -> callback.onClickDelete(meeting));
-            delButton.setOnClickListener(new View.OnClickListener() {
+            /// holder.delButton.setOnClickListener(view -> callback.onClickDelete(meeting)); ///
+            final Meeting meeting = mMeetingList.get(position);
+            holder.delButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Meeting meeting = delete Meeting();
+
                     DI.getApiMeeting().delMeeting(meeting);
-                    finish(); }
+                    notifyDataSetChanged();
+                }
 
             });
 
 
-
-
-           Resources resources=getResources();
-            final TypedArray imgs = getResources().obtainTypedArray(R.array.random_images_array);
-            final Random rand = new Random();
-            final int rndInt = rand.nextInt(imgs.length());
-            final int resID = imgs.getResourceId(rndInt, 0);
-
-
-            int[] images = {R.drawable.circle_0,R.drawable.circle_1,R.drawable.circle_2,R.drawable.circle_3, R.drawable.circle_4, R.drawable.circle_5};
-            Random rand = new Random();
-
-
+            // Return the size of your dataset (invoked by the layout manager)
         }
-
-
-        // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
             return mMeetingList.size();

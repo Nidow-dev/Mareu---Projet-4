@@ -96,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.filtre_nom) {
             return true;
         }
 
-        Intent intent = new Intent("SORT_ACTION");
+        /*** Intent intent = new Intent("SORT_ACTION");
         switch (item.getItemId()) {
             case R.id.sort_by_name:
                 Log.e("room", "onOptionsItemSelected: ROOM");
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
             return super.onOptionsItemSelected(item);
         }
-        LocalBroadcastManager.getInstance(MainActivity.this).sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(MainActivity.this).sendBroadcast(intent);***/
         return super.onOptionsItemSelected(item);
 
         // Rafraichir la list de la RecyclerView onResume ou onStart et initList

@@ -67,7 +67,7 @@ public class AddMeeting extends AppCompatActivity implements
 
  /** Salle de Réunion Spinner **/
 
-        List<String> rooms = Arrays.asList("Salle A", "Salle B", "Salle C", "Salle D", "Salle E");
+        List<String> rooms = Arrays.asList("Mario", "Luigi", "Peach", "Toad", "Daisy", "Wario");
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, rooms));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
