@@ -1,13 +1,17 @@
 package elodie.gross.mareu;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -84,8 +88,28 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+        // Inflate the options menu from XML
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+
+        // Get the SearchView and set the searchable configuration
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.filtre_nom).getActionView();
+        // Assumes current activity is the searchable activity
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setIconifiedByDefault(false);
+    return true;
+    }// Do not iconify the widget; expand it by default
+
+
+
+
+
+       /*** public void setOnQueryTextListener (SearchView.OnQueryTextListener listener); ***/
+
+
+
+
 
 
     @Override
@@ -100,19 +124,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        /*** Intent intent = new Intent("SORT_ACTION");
-        switch (item.getItemId()) {
-            case R.id.sort_by_name:
-                Log.e("room", "onOptionsItemSelected: ROOM");
-                intent.putExtra("SORTBY", "ROOM");
-                break;
-            case R.id.sort_by_date:
-                intent.putExtra("SORTBY", "DATE");
-                break;
 
-            return super.onOptionsItemSelected(item);
-        }
-        LocalBroadcastManager.getInstance(MainActivity.this).sendBroadcast(intent);***/
         return super.onOptionsItemSelected(item);
 
         // Rafraichir la list de la RecyclerView onResume ou onStart et initList
