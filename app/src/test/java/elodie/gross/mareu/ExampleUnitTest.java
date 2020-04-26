@@ -2,16 +2,19 @@ package elodie.gross.mareu;
 
 import org.junit.Test;
 
+import elodie.gross.mareu.service.ApiMeetingService;
+
 import static org.junit.Assert.*;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
-public class ExampleUnitTest {
+public class MainActivity{
+
+    public class ApiMeetingServiceTest {
+
+        private ApiMeetingService service;}
+
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
-    }
-}
+    public void checkAddButton(){
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed()))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(4, click()));
+
+        onView(ViewMatchers.withId(R.id.neighbour_favorite_btn)).perform(click()).check(matches(isEnabled()));
