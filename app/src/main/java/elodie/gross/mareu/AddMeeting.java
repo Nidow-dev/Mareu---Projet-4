@@ -88,6 +88,7 @@ public class AddMeeting extends AppCompatActivity implements
         if (v == btnDatePicker) {
 
             // Get Current Date
+            room = spinner.getSelectedItem().toString();
             final Calendar c = Calendar.getInstance();
             mYear = c.get(Calendar.YEAR);
             mMonth = c.get(Calendar.MONTH);

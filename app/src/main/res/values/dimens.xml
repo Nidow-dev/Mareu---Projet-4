@@ -1,6 +1,7 @@
-<resources>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="margin_text">16dp</dimen>
-    <dimen name="circle_size">50dp</dimen>
-    <dimen name="items_main">30dp</dimen>
-</resources>
+    <resources>
+        <dimen name="fab_margin">16dp</dimen>
+        <dimen name="margin_text">8dp</dimen>
+        <dimen name="circle_size">40dp</dimen>
+        <dimen name="items_main">30dp</dimen>
+    </resources>
+

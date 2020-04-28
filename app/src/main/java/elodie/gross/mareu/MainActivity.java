@@ -1,9 +1,11 @@
 package elodie.gross.mareu;
 
+import android.app.DatePickerDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,12 +21,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
 import elodie.gross.mareu.service.FakeApiMeeting;
 import elodie.gross.mareu.ui.MyRecyclerViewAdapter;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,6 +104,25 @@ public class MainActivity extends AppCompatActivity {
         // Assumes current activity is the searchable activity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setIconifiedByDefault(false);
+
+        @OnClick(R.id.filtre_date)
+        void displayDatePicker() {
+            Calendar calendar = Calendar.getInstance();
+            DatePickerDialog mDatePickerDialog;
+
+            mDatePickerDialog = new DatePickerDialog(Objects.requireNonNull(getContext()),
+                    (view, year, month, dayOfMonth) -> {
+                        Calendar cal = Calendar.getInstance();
+                        cal.set(year, month, dayOfMonth);
+
+                        // ajouter
+                    },
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH));
+
+            mDatePickerDialog.show();
+        }
     return true;
     }// Do not iconify the widget; expand it by default
 

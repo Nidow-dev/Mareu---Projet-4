@@ -21,7 +21,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static org.hamcrest.Matchers.allOf;
 import static org.junit.Assert.*;
 
-public class MainActivityTest {
+/***public class MainActivityTest {
 
     private static int ITEMS_COUNT = 12;
 
@@ -33,14 +33,14 @@ public class MainActivityTest {
     @Test
     void givenValidEmailAddresses_whenInstatiateMeeting_thenGetValidParticipants() {
         List<String> participants = Arrays.asList(
-                "p.roger@gmail.com",
-                "s.ramen@gmail.fr");
+                "participant@test.fr");
     }
+}
 
-    @Test
+   /*** @Test
     public void checkAddButton(){
         onView(allOf(ViewMatchers.withId(R.id.fab), isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(4, click()));
 
         onView(ViewMatchers.withId(R.id.btn_valider)).perform(click()).check(matches(isEnabled()));
-}
+} ***/

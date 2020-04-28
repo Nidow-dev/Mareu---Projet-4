@@ -47,6 +47,7 @@ ImageButton delButton;
                 description = v.findViewById(R.id.item_description);
                 participants = v.findViewById(R.id.item_participants);
                 date = v.findViewById(R.id.item_date);
+                heure = v.findViewById(R.id.item_heure);
                 delButton = itemView.findViewById(R.id.delete_item);
                 room = v.findViewById(R.id.item_salle);
 
@@ -92,6 +93,9 @@ ImageButton delButton;
             SimpleDateFormat mDate = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
             String setDate = mDate.format(mMeetingList.get(position).getmDate().getTime());
             holder.date.setText(setDate);
+            SimpleDateFormat mHeure = new SimpleDateFormat(("hh:mm"), Locale.FRANCE);
+            String setHeure = mHeure.format(mMeetingList.get(position).getmDate().getTime());
+            holder.heure.setText(setHeure);
             holder.room.setText(mMeetingList.get(position).getmRoom());
 
 
