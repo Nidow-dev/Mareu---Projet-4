@@ -18,10 +18,11 @@ import elodie.gross.mareu.service.ApiMeetingService;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static org.hamcrest.Matchers.allOf;
 import static org.junit.Assert.*;
 
-/***public class MainActivityTest {
+public class MainActivityTest {
 
     private static int ITEMS_COUNT = 12;
 
@@ -30,17 +31,32 @@ import static org.junit.Assert.*;
     private List<Meeting> mNeighbours;
 
 
-    @Test
+ /***   @Test
     void givenValidEmailAddresses_whenInstatiateMeeting_thenGetValidParticipants() {
         List<String> participants = Arrays.asList(
                 "participant@test.fr");
     }
-}
 
-   /*** @Test
+}} ***/
+
+
+   @Test
     public void checkAddButton(){
         onView(allOf(ViewMatchers.withId(R.id.fab), isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(4, click()));
 
         onView(ViewMatchers.withId(R.id.btn_valider)).perform(click()).check(matches(isEnabled()));
-} ***/
+       }
+
+
+    @Test
+    public void givenMeetingList_when_Add_With_Floating_Button() {
+        Intents.init();
+        onView(ViewMatchers.withId(R.id.add))
+        .perform(click());
+        intended(hasComponent(AddMeetingActivity.class.getName()));
+        Intents.release();
+        }
+        }
+
+        
