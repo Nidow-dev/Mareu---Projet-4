@@ -88,8 +88,6 @@ ImageButton delButton;
             // - replace the contents of the view with that element
             holder.description.setText(mMeetingList.get(position).getmMeetingName());
             holder.participants.setText(mMeetingList.get(position).getmParticipants());
-            /// ajouter les images  holder.roundColor.setImageDrawable();
-
             SimpleDateFormat mDate = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
             String setDate = mDate.format(mMeetingList.get(position).getmDate().getTime());
             holder.date.setText(setDate);

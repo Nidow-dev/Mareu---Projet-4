@@ -2,6 +2,8 @@ package elodie.gross.mareu;
 
 import android.content.Context;
 
+import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -17,6 +19,9 @@ import elodie.gross.mareu.service.ApiMeetingService;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.intent.Intents.intended;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static org.hamcrest.Matchers.allOf;
@@ -54,9 +59,8 @@ public class MainActivityTest {
         Intents.init();
         onView(ViewMatchers.withId(R.id.add))
         .perform(click());
-        intended(hasComponent(AddMeetingActivity.class.getName()));
+        intended(hasComponent(AddMeeting.class.getName()));
         Intents.release();
         }
         }
 
-        

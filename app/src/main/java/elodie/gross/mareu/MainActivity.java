@@ -92,71 +92,38 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
     }
 
-    @OnClick(R.id.filtre_date)
-    void displayDatePicker() {
-        Calendar calendar = Calendar.getInstance();
-        DatePickerDialog mDatePickerDialog;
-
-        mDatePickerDialog = new DatePickerDialog(Objects.requireNonNull(getContext()),
-                (view, year, month, dayOfMonth) -> {
-                    Calendar cal = Calendar.getInstance();
-                    cal.set(year, month, dayOfMonth);
-                },
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH));
-
-        mDatePickerDialog.show();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         // Inflate the options menu from XML
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
 
         // Get the SearchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.filtre_nom).getActionView();
-        // Assumes current activity is the searchable activity
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setIconifiedByDefault(false);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        
 
 
-    return true;
+        return true;
+    }
 
 
-        @OnClick(R.id.filtre_date)
-        void displayDatePicker() {
-            Calendar calendar = Calendar.getInstance();
-            DatePickerDialog mDatePickerDialog;
-
-            mDatePickerDialog = new DatePickerDialog(Objects.requireNonNull(getContext()),
-                    (view, year, month, dayOfMonth) -> {
-                        Calendar cal = Calendar.getInstance();
-                        cal.set(year, month, dayOfMonth);
-
-                        // ajouter
-                    },
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH));
-
-            mDatePickerDialog.show();
-        }
-    }// Do not iconify the widget; expand it by default
+    // Do not iconify the widget; expand it by default
 
 
-
-
-
-       /*** public void setOnQueryTextListener (SearchView.OnQueryTextListener listener); ***/
-
-
-
-
+    /*** public void setOnQueryTextListener (SearchView.OnQueryTextListener listener); ***/
 
 
     @Override
@@ -168,6 +135,27 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.filtre_nom) {
+        }
+
+        if (id == R.id.filtre_date) {
+            Calendar calendar = Calendar.getInstance();
+            DatePickerDialog mDatePickerDialog;
+
+            mDatePickerDialog = new DatePickerDialog(Objects.requireNonNull(this),
+                    (view, year, month, dayOfMonth) -> {
+                        Calendar cal = Calendar.getInstance();
+                        cal.set(year, month, dayOfMonth);
+                        // methode qui prends Calendar en parametre, et va vérifier les meeting pour afficher celles de la date choisies et afficher la nouvelle liste
+
+
+                    },
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH));
+
+            mDatePickerDialog.show();
+
+
             return true;
         }
 
@@ -178,3 +166,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+
