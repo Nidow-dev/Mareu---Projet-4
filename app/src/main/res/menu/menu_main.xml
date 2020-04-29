@@ -9,9 +9,9 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/filtre_nom"
+        android:id="@+id/filtre_salle"
         android:orderInCategory="100"
-        android:title="@string/Filtre_par_nom"
+        android:title="Par Salle"
         app:showAsAction="collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 

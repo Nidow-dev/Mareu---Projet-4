@@ -1,23 +1,17 @@
 package elodie.gross.mareu;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,9 +24,8 @@ import java.util.Objects;
 import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
 import elodie.gross.mareu.service.FakeApiMeeting;
+import elodie.gross.mareu.ui.CalendarFragment;
 import elodie.gross.mareu.ui.MyRecyclerViewAdapter;
-
-import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -101,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Get the SearchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.filtre_nom).getActionView();
+        SearchView searchView = (SearchView) menu.findItem(R.id.filtre_salle).getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -110,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                MyRecyclerViewAdapter.getFilter().filter(newText);
                 return false;
             }
         });
@@ -133,8 +127,12 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        private  void performFilter() {
+            CalendarFragment filterDialog = new CalendarFragment(mApiMeeting.getRooms());
+        }
+
         //noinspection SimplifiableIfStatement
-        if (id == R.id.filtre_nom) {
+        if (id == R.id.filtre_salle) {
         }
 
         if (id == R.id.filtre_date) {

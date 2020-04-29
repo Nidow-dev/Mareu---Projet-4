@@ -27,7 +27,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static org.hamcrest.Matchers.allOf;
 import static org.junit.Assert.*;
 
-public class MainActivityTest {
+public class AddMeetingInstrumentedTest {
 
     private static int ITEMS_COUNT = 12;
 
