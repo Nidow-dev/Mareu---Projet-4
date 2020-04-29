@@ -52,14 +52,13 @@ public class MainActivity extends AppCompatActivity {
         mMeetingList = mApiMeeting.getMeeting();
 
 
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddMeeting.class);
                 startActivity(intent);
-
-
             }
         });
 
