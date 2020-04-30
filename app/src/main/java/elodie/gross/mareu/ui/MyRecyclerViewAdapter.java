@@ -132,6 +132,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public Filter getFilter() {
         return filter;
     }
+
+    public Filter getDateFilter() {
+        return filter;
+    }
 /***
         public void onDateSet (DatePicker view, int month, int dayOfMonth ) {
         if (month<10){

@@ -9,11 +9,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
 import elodie.gross.mareu.service.ApiMeetingService;
+import elodie.gross.mareu.service.DummyMeetingGenerator;
 
 import static elodie.gross.mareu.service.DummyMeetingGenerator.FAKE_MEETING;
 import static org.hamcrest.core.IsNull.notNullValue;
@@ -65,3 +67,40 @@ public class ApiUnitaireTest {}
     }
 
     // Filtre Heure
+
+    @Test
+    public void sortMeetingByDate(){
+        mMeetings = mApiService.getMeetings();
+        Collections.sort(mMeetings, new DummyMeetingGenerator.MeetingComparatorTime());
+        Date date1 = null, date2 = null;
+        for (Meeting meeting : mMeetings){
+            if (date1 == null && date2 == null){
+                date1 = meeting.getDate();
+            }else if (date1 != null && date2 == null){
+                date2 = meeting.getDate();
+                assertTrue(date1.before(date2));
+            }else {
+                date1 = date2;
+                date2 = null;
+            }
+        }
+    }
+
+    /// Fltre par nom
+    @Test
+    public void sortMeetingByRoom(){
+        mMeetings = mApiService.getMeetings();
+        Collections.sort(mMeetings, new DummyMeetingGenerator.MeetingComparatorRoom());
+        String room1 = null, room2 = null;
+        for (Meeting meeting : mMeetings){
+            if (room1 == null && room2 == null){
+                room1 = meeting.getMeetingPoint();
+            }else if (room1 != null && room2 == null){
+                room2 = meeting.getMeetingPoint();
+                assertTrue(room1.compareTo(room2)<=0);
+            }else {
+                room1 = room2;
+                room2 = null;
+            }
+        }
+    }
