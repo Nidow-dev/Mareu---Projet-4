@@ -1,5 +1,6 @@
 package elodie.gross.mareu.ui;
 
+import android.app.DatePickerDialog;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.view.LayoutInflater;
@@ -12,25 +13,28 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 
 import elodie.gross.mareu.R;
 import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
 
+import static java.security.AccessController.getContext;
+
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder> implements Filterable {
 
     List <Meeting> mMeetingList;
-    List<String> mMeetingListFull;
+    List<Meeting> mMeetingListFull;
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -123,11 +127,20 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     /// Gestion des filtres ///
 
+
     @Override
     public Filter getFilter() {
         return filter;
     }
+/***
+        public void onDateSet (DatePicker view, int month, int dayOfMonth ) {
+        if (month<10){
+            DateFilter = dayOfMonth + "/0" + "/" + Year;
+        } else {
 
+        }
+    }
+***/
     Filter filter = new Filter() {
 
         /// FILTRE SEARCHVIEW ///
@@ -136,14 +149,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
 
-            List<String> filteredList = new ArrayList<>();
+            List<Meeting> filteredList = new ArrayList<>();
             if (charSequence.toString().isEmpty()) {
                 filteredList.addAll(mMeetingListFull);
             } else {
 
-                for (String Meeting = mMeetingListFull); {
-                    if (Meeting.toLowerCase().contains(charSequence.toString().toLowerCase())) {
-                        filteredList.add(Meeting);
+                for (Meeting meeting : mMeetingListFull) {
+                    if (meeting.getmRoom().toLowerCase().contains(charSequence.toString().toLowerCase())) {
+                        filteredList.add(meeting);
                     }
                 }
             }
@@ -162,5 +175,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             }
 
     };
+
+
     }
 

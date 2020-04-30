@@ -24,13 +24,12 @@ import java.util.Objects;
 import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
 import elodie.gross.mareu.service.FakeApiMeeting;
-import elodie.gross.mareu.ui.CalendarFragment;
 import elodie.gross.mareu.ui.MyRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private MyRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
 
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                MyRecyclerViewAdapter.getFilter().filter(newText);
+                mAdapter.getFilter().filter(newText);
                 return false;
             }
         });
@@ -126,9 +125,7 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        private  void performFilter() {
-            CalendarFragment filterDialog = new CalendarFragment(mApiMeeting.getRooms());
-        }
+
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.filtre_salle) {

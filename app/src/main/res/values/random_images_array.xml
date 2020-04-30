@@ -8,6 +8,11 @@
         <item>@drawable/icon_circle_color_3</item>
         <item>@drawable/icon_circle_color_4</item>
         <item>@drawable/icon_circle_color_5</item>
+        <item>@drawable/icon_circle_color_6</item>
+        <item>@drawable/icon_circle_color_7</item>
+        <item>@drawable/icon_circle_color_8</item>
+        <item>@drawable/icon_circle_color_9</item>
+        <item>@drawable/icon_circle_color_10</item>
     </array>
 
     <string-array name="random_images_array" />
