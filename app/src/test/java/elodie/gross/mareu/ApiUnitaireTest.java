@@ -94,9 +94,9 @@ public class ApiUnitaireTest {}
         String room1 = null, room2 = null;
         for (Meeting meeting : mMeetings){
             if (room1 == null && room2 == null){
-                room1 = meeting.getMeetingPoint();
+                room1 = meeting.getmMeetingName();
             }else if (room1 != null && room2 == null){
-                room2 = meeting.getMeetingPoint();
+                room2 = meeting.getMeetingName();
                 assertTrue(room1.compareTo(room2)<=0);
             }else {
                 room1 = room2;
