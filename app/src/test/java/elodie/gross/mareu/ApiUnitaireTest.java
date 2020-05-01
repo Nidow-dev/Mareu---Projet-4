@@ -1,22 +1,27 @@
 package elodie.gross.mareu;
 
+import org.hamcrest.collection.IsIterableContainingInAnyOrder;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
 import elodie.gross.mareu.service.ApiMeetingService;
+import elodie.gross.mareu.ui.MyRecyclerViewAdapter;
 
 import static elodie.gross.mareu.service.DummyMeetingGenerator.FAKE_MEETING;
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
-
+@RunWith(RobolectricTestRunner.class)
 public class ApiUnitaireTest {
 
     private ApiMeetingService service;
@@ -27,10 +32,11 @@ public class ApiUnitaireTest {
 
     @Before
     public void setup() {
-        mApiService = DI.getNewInstanceFakeApiMeeting();
+        mApiService = (ApiMeetingService) DI.getNewInstanceApiMeeting();
     }
-/// Ajouter la réunion depuis l'API ///
 
+/// Ajouter la réunion depuis l'API ///
+    @Test
     void addMeeting() {
         Meeting meeting = new Meeting(
                 "Reunion A",
@@ -38,11 +44,10 @@ public class ApiUnitaireTest {
                 Calendar.getInstance(),
                 "participant@mareu.com",
                 "Peach");
-
-        finally{
+        assertTrue(mApiService.getMeeting().contains(addMeeting());
             mApiService.addMeeting(meeting);
-        }
     }
+
 
 
 /// Afficher la liste des réunion depuis l'API ///
@@ -58,16 +63,28 @@ public class ApiUnitaireTest {
     /// Supprimer une réunion depuis l'API
     @Test
     public void deleteMeetingWithSuccess() {
-        Meeting meetingToDelete = service.getMeeting().get(0);
-        service.delMeeting(meetingToDelete);
-        assertFalse(service.getMeeting().contains(meetingToDelete));
+        Meeting meetingToDelete = mApiService.getMeeting().get(0);
+        mApiService.delMeeting(meetingToDelete);
+        assertFalse(mApiService.getMeeting().contains(meetingToDelete));
     }
 
     // Filtre Heure
 
     @Test
-    public void filterByDate(){
-            Date date = new Date();
+    public void filterByDate() {
+
+        Calendar calendar = Calendar.getInstance();
+
+        MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(mApiService.getMeeting());
+        assertEquals(6, adapter.getItemCount());
+        adapter.getDateFilter(calendar).filter("");
+        assertEquals(6, adapter.getItemCount());
+
+        calendar.set(2020, 4, 30);
+        adapter.getDateFilter(calendar).filter("");
+        assertEquals(0, adapter.getItemCount());
+    }
+           /*** Date date = new Date();
 
             mApiService.addMeeting(new Meeting(1, date, new Date(), "Reunion A", mApiService.getMeetingRoom().get(0), mApiService.getParticipants()));
             mApiService.addMeeting(new Meeting(2, date, new Date(), "Reunion B", mApiService.getMeetingRoom().get(1), mApiService.getParticipants()));
@@ -83,7 +100,7 @@ public class ApiUnitaireTest {
             meetings = mApiService.getMeetingsByDate("01/05/2020");
             assertEquals(1, meetings.size());
             assertEquals("Meeting n°3", meetings.get(0).getmMeetingName());
-        }
+        } ***/
 
 
    /*** public void sortMeetingByDate(){
@@ -105,9 +122,15 @@ public class ApiUnitaireTest {
 
     /// Fltre par nom
 
-@Test
-    public void FilterByRoom(){
-        mApiService.addMeeting(new Meeting(1, new Date(), new Date(), "Meeting n°1", mApiService.getMeetingRoom().get(0), mApiService.getParticipants()));
+    @Test
+     public void filterByRoom() {
+                MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(mApiService.getMeeting());
+                Assert.assertEquals(6, adapter.getItemCount());
+                adapter.getFilter().filter("Mario");
+                assertEquals(1, adapter.getItemCount());
+            }}
+
+       /*** mApiService.addMeeting(new Meeting(1, new Date(), new Date(), "Meeting n°1", mApiService.getMeetingRoom().get(0), mApiService.getParticipants()));
         mApiService.addMeeting(new Meeting(2, new Date(), new Date(), "Meeting n°2", mApiService.getMeetingRoom().get(0), mApiService.getParticipants()));
 
         List<MeetingRoom> meetingRooms = new ArrayList<>();
@@ -123,7 +146,7 @@ public class ApiUnitaireTest {
         assertTrue(meetings.contains(meeting_inList));
         assertFalse(meetings.contains(meeting_notInList));
         }
-        }
+        }}***/
 
 /***
         mMeetings = mApiService.getMeetings();

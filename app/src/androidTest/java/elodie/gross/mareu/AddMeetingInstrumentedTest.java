@@ -82,7 +82,7 @@ public class AddMeetingInstrumentedTest {
                             isDisplayed()));
             floatingActionButton.perform(click());
 
-            ViewInteraction floatingActionButton2 = onView(
+          /***  ViewInteraction floatingActionButton2 = onView(
                     allOf(withId(R.id.fab),
                             childAtPosition(
                                     childAtPosition(
@@ -90,7 +90,7 @@ public class AddMeetingInstrumentedTest {
                                             0),
                                     2),
                             isDisplayed()));
-            floatingActionButton2.perform(click());
+            floatingActionButton2.perform(click());***/
 
             ViewInteraction appCompatEditText = onView(
                     allOf(withId(R.id.mareu_type_name),
@@ -174,7 +174,7 @@ public class AddMeetingInstrumentedTest {
                                     0)));
             appCompatButton5.perform(scrollTo(), click());
 
-            ViewInteraction appCompatImageButton = onView(
+        /***    ViewInteraction appCompatImageButton = onView(
                     allOf(withContentDescription("Navigate up"),
                             childAtPosition(
                                     allOf(withId(R.id.action_bar),
@@ -183,7 +183,7 @@ public class AddMeetingInstrumentedTest {
                                                     0)),
                                     1),
                             isDisplayed()));
-            appCompatImageButton.perform(click());
+            appCompatImageButton.perform(click());***/
         }
 
 
@@ -197,7 +197,7 @@ public class AddMeetingInstrumentedTest {
                                 allOf(withId(R.id.items_layout),
                                         childAtPosition(
                                                 withId(R.id.recyclerView),
-                                                5)),
+                                                1)),
                                 6),
                         isDisplayed()));
         appCompatImageButton.perform(click());
