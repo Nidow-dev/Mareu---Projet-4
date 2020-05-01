@@ -11,24 +11,6 @@ public interface FakeApiMeeting {
 
 
 
-
-
-   /** List<String> getRooms();
-
-    // Ajouter une réunion
-
-    void addRoom(String room);
-
-    // Supprimer une réunion
-
-    void delRoom(String room);
-
-   // Tout effacer
-
-    void delAllRooms();
-
-    // Liste des réunions **/
-
     List<Meeting> getMeeting();
 
     // Ajouter une réunion
