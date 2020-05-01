@@ -139,7 +139,9 @@ public class MainActivity extends AppCompatActivity {
                     (view, year, month, dayOfMonth) -> {
                         Calendar cal = Calendar.getInstance();
                         cal.set(year, month, dayOfMonth);
+                        mAdapter.getDateFilter(cal).filter("");
                         // methode qui prends Calendar en parametre, et va vérifier les meeting pour afficher celles de la date choisies et afficher la nouvelle liste
+
 
 
                     },

@@ -133,18 +133,39 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return filter;
     }
 
-    public Filter getDateFilter() {
-        return filter;
-    }
-/***
-        public void onDateSet (DatePicker view, int month, int dayOfMonth ) {
-        if (month<10){
-            DateFilter = dayOfMonth + "/0" + "/" + Year;
-        } else {
+    // FILTRE DATE PICKER DIALOGUE
 
-        }
+    public Filter getDateFilter(Calendar calendar) {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                List<Meeting> filteredList = new ArrayList<>();
+                if (calendar == null) {
+                    filteredList.addAll(mMeetingListFull);
+                } else {
+
+                    for (Meeting meeting : mMeetingListFull) {
+                        if (meeting.getmDate().get(Calendar.YEAR) == calendar.get(Calendar.YEAR) &&
+                                meeting.getmDate().get(Calendar.MONTH) == calendar.get(Calendar.MONTH) &&
+                                meeting.getmDate().get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH)) {
+                            filteredList.add(meeting);
+                        }
+                    }
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filteredList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults filterResults) {
+                mMeetingList.clear();
+                mMeetingList.addAll((Collection<? extends Meeting>) filterResults.values);
+                notifyDataSetChanged();
+            }
+        };
     }
-***/
     Filter filter = new Filter() {
 
         /// FILTRE SEARCHVIEW ///
