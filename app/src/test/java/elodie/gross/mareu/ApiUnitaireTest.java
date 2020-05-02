@@ -13,11 +13,13 @@ import java.util.List;
 import elodie.gross.mareu.di.DI;
 import elodie.gross.mareu.model.Meeting;
 import elodie.gross.mareu.service.ApiMeetingService;
+import elodie.gross.mareu.service.FakeApiMeeting;
 import elodie.gross.mareu.ui.MyRecyclerViewAdapter;
 
 import static elodie.gross.mareu.service.DummyMeetingGenerator.FAKE_MEETING;
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -27,25 +29,26 @@ public class ApiUnitaireTest {
     private ApiMeetingService service;
 
     private MainActivity mActivity;
-    private ApiMeetingService mApiService;
+    private FakeApiMeeting mApiService;
     private List<Meeting> mMeetings;
 
     @Before
     public void setup() {
-        mApiService = (ApiMeetingService) DI.getNewInstanceApiMeeting();
+        mApiService = DI.getNewInstanceApiMeeting();
     }
 
 /// Ajouter la réunion depuis l'API ///
     @Test
-    void addMeeting() {
+    public void addMeeting() {
         Meeting meeting = new Meeting(
                 "Reunion A",
                 Calendar.getInstance(),
                 Calendar.getInstance(),
                 "participant@mareu.com",
                 "Peach");
-        assertTrue(mApiService.getMeeting().contains(addMeeting());
-            mApiService.addMeeting(meeting);
+        mApiService.addMeeting(meeting);
+        assertTrue(mApiService.getMeeting().contains(meeting));
+
     }
 
 
@@ -54,10 +57,14 @@ public class ApiUnitaireTest {
 
     @Test
     public void getMeetingWithSuccess() {
-        List<Meeting> meetings = service.getMeeting();
-        List<Meeting> expectedMeeting = FAKE_MEETING;
-        assertThat(meetings, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedMeeting.toArray()));
+        Meeting meeting = mApiService.getMeeting().get(0);
+        assertNotNull(meeting);
     }
+
+        /***List<Meeting> meeting = service.getMeeting();
+        List<Meeting> expectedMeeting = FAKE_MEETING;
+        assertThat(meeting, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedMeeting.toArray()));
+    } ***/
 
 
     /// Supprimer une réunion depuis l'API
